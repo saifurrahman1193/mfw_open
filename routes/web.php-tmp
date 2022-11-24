@@ -1,0 +1,80 @@
+<?php
+
+Route::get('/', function () {
+		return view('dashboard');
+	})->name('dashboard');
+
+// HRM Module
+// Route::get('hrm/hr', function () { return view('hrm/hr'); })->name('hr');
+Route::get('hrm/hr', 'HRMController@hr')->name('hr');
+Route::get('hrm/hr/{employee}', 'HRMController@hrShow')->name('hr.show');
+Route::post('hrm/hr', 'HRMController@hrInsert')->name('hr.insert');
+Route::put('hrm/hr/{employeeId}', 'HRMController@hrUpdate')->name('hr.update');
+Route::delete('hrm/hr/{employeeId}', 'HRMController@hrDelete')->name('hr.delete');
+
+Route::get('hrm/payroll', 'HRMController@payroll')->name('payroll');
+Route::post('hrm/payroll', 'HRMController@payrollInsert')->name('payroll.insert');
+Route::delete('hrm/payroll/{payrollId}', 'HRMController@payrollDelete')->name('payroll.delete');
+
+Route::get('hrm/supplier', 'HRMController@supplier')->name('supplier');
+Route::post('hrm/supplier/', 'HRMController@supplierInsert')->name('supplier.insert');
+Route::view('hrm/supplier/{supplierId}', 'HRMController@supplierShow')->name('supplier.show');
+Route::put('hrm/supplier/{supplierId}', 'HRMController@supplierUpdate')->name('supplier.update');
+Route::delete('hrm/supplier/{supplierId}', 'HRMController@supplierDelete')->name('supplier.delete');
+
+// inventory module
+Route::get('inventory/category', 'InventoryController@category')->name('category');
+Route::post('inventory/category/', 'InventoryController@categoryInsert')->name('category.insert');
+Route::delete('inventory/category/{categoryId}', 'InventoryController@categoryDelete')->name('category.delete');
+
+Route::get('inventory/items', 'InventoryController@items')->name('items');
+Route::post('inventory/items/', 'InventoryController@itemsInsert')->name('items.insert');
+Route::delete('inventory/items/{itemId}', 'InventoryController@itemDelete')->name('items.delete');
+
+Route::get('inventory/inventory', 'InventoryController@inventory')->name('inventory');
+Route::post('inventory/inventory/', 'InventoryController@inventoryInsert')->name('inventory.insert');
+Route::delete('inventory/inventory/{inventoryId}', 'InventoryController@inventoryDelete')->name('inventory.delete');
+
+// customer
+Route::get('customer/index', function () {return view('customer/index');})->name('customer');
+Route::get('customer/create', function () {return view('customer/create');})->name('createcustomer');
+
+// product
+Route::get('product/index', function () {return view('product/index');})->name('product');
+Route::get('product/create', function () {return view('product/create');})->name('createproduct');
+
+// brand
+Route::get('product/brand', function () {return view('product/brand');})->name('brand');
+Route::get('product/createbrand', function () {return view('product/createbrand');})->name('createbrand');
+
+// batch
+Route::get('product/batch', function () {return view('product/batch');})->name('batch');
+Route::get('product/createbatch', function () {return view('product/createbatch');})->name('createbatch');
+
+// Requisition
+Route::get('requisition/index', function () {return view('requisition/index');})->name('requisition');
+Route::get('requisition/create', function () {return view('requisition/create');})->name('createrequisition');
+Route::get('requisition/requisition_receive', function () {return view('requisition/requisition_receive');})->name('requisition_receive');
+
+Route::get('offer/offermanage', function () {return view('offer/offermanage');})->name('offermanage');
+Route::get('offer/workorder', function () {return view('offer/workorder');})->name('workorder');
+Route::get('offer/saleorder', function () {return view('offer/saleorder');})->name('saleorder');
+Route::get('offer/itemdelivery', function () {return view('offer/itemdelivery');})->name('itemdelivery');
+
+// Bills and transactions module================================================
+// Bills and transactions module================================================
+Route::get('billstransactions/bills', 'BillsTransactionsController@bills')->name('bills');
+Route::post('billstransactions/bills/', 'BillsTransactionsController@billInsert')->name('bills.insert');
+Route::delete('billstransactions/bills/{billId}', 'BillsTransactionsController@billDelete')->name('bills.delete');
+
+Route::get('billstransactions/transactions', 'BillsTransactionsController@transactions')->name('transactions');
+Route::post('billstransactions/transactions/', 'BillsTransactionsController@transactionInsert')->name('transactions.insert');
+Route::delete('transactionstransactions/transactions/{transactionId}', 'BillsTransactionsController@transactionDelete')->name('transactions.delete');
+
+Route::get('billstransactions/transactionType', 'BillsTransactionsController@transactionType')->name('transactionType');
+Route::post('billstransactions/transactionType/', 'BillsTransactionsController@transactionTypeInsert')->name('transactionType.insert');
+Route::delete('billstransactions/transactionType/{transactionTypeId}', 'BillsTransactionsController@transactionTypeDelete')->name('transactionType.delete');
+
+Route::get('billstransactions/billType', 'BillsTransactionsController@billType')->name('billType');
+Route::post('billstransactions/billType/', 'BillsTransactionsController@billTypeInsert')->name('billType.insert');
+Route::delete('billstransactions/billType/{billTypeId}', 'BillsTransactionsController@billTypeDelete')->name('billType.delete');
